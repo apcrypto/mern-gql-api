@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const gql = require('graphql-tag');
 const { ApolloServer } = require('apollo-server-express');
-const resolvers = require('./src/resolvers.js');
+const gqlResolvers = require('./src/resolvers.ts');
 const { readFileSync } = require('fs');
 const http = require('http');
 
@@ -20,7 +20,7 @@ async function startServer() {
   );
   const server = new ApolloServer({
     typeDefs,
-    resolvers,
+    gqlResolvers,
   });
   // Note you must call `start()` on the `ApolloServer`
   // instance before passing the instance to `expressMiddleware`
